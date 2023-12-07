@@ -8,23 +8,33 @@ import java.util.function.Supplier;
 
 public class Order {
 
-
     private String status;
     private Long id;
     private  LocalDate orderDate;
     private  LocalDate deliveryDate;
-
     private List<Product> products;
     private Customer customer;
 
-    public Order(List<Product> product, Customer customer) {
-        this.products = products;
-        this.customer = customer;
+    public Order(Customer customer) {
         Random cod = new Random();
-        this.id = cod.nextLong(1, 120);
-        this.orderDate = LocalDate.now();
-        this.deliveryDate = orderDate.plusDays(5);
+        this.id = cod.nextLong();
+        this.customer = customer;
         this.status = "is loading";
+        this.orderDate = LocalDate.now();
+        this.deliveryDate = orderDate.plusDays(1);
+        this.products = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "status='" + status + '\'' +
+                ", id=" + id +
+                ", orderDate=" + orderDate +
+                ", deliveryDate=" + deliveryDate +
+                ", products=" + products +
+                ", customer=" + customer +
+                '}';
     }
 
     public String getStatus() {
@@ -66,6 +76,10 @@ public class Order {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    public void addProduct(Product e){
+        products.add(e);
+    };
 
     public Customer getCustomer() {
         return customer;

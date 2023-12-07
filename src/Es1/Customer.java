@@ -1,10 +1,19 @@
 package Es1;
 
+import java.util.Random;
+
 public class Customer {
 
         private Long id;
         private String name;
         private Integer tier;
+
+    public Customer(String name, Integer tier) {
+        this.name = name;
+        this.tier = tier;
+        Random rndm=new Random();
+        this.id= rndm.nextLong();
+    }
 
     public Long getId() {
         return id;

@@ -9,13 +9,13 @@ public class Product extends Order {
        private Double price;
        private Long id;
 
-       public Product(List<Product> product, Customer customer, String name, String category, Double price, Long id) {
+       public Product(List<Product> product, Customer customer, String name, String category, Double price) {
               super(product, customer);
               this.name = name;
               this.category = category;
               this.price = price;
               Random cod = new Random();
-              this.id = id;
+              this.id = cod.nextLong();
        }
 
        public String getName() {
@@ -46,8 +46,6 @@ public class Product extends Order {
               return id;
        }
 
-       public void setId(Long id) {
-              this.id = id;
-       }
+
 
 }
