@@ -1,6 +1,5 @@
-package Es1;
+package Esercizi;
 
-import java.util.List;
 import java.util.Random;
 
 public class Product {
@@ -45,6 +44,13 @@ public class Product {
               return id;
        }
 
-
-
+       @Override
+       public String toString() {
+              return "Product{" +
+                      "name='" + name + '\'' +
+                      ", category='" + category + '\'' +
+                      ", price=" + price +
+                      ", id=" + id +
+                      '}';
+       }
 }

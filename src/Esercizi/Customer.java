@@ -1,4 +1,4 @@
-package Es1;
+package Esercizi;
 
 import java.util.Random;
 

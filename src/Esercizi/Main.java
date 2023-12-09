@@ -1,6 +1,8 @@
-import Es1.Customer;
-import Es1.Order;
-import Es1.Product;
+package Esercizi;
+
+import Esercizi.Customer;
+import Esercizi.Order;
+import Esercizi.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,17 +13,18 @@ public class Main {
 
              //SEZIONE TUTTI I PRODOTTI//
         Product Ps5=new Product("Playstation","console",600);
-        Product ToyCar=new Product("Car","boys",60);
-        Product ToyPlane=new Product("Plane","boys",50);
-        Product Lego=new Product("Lego Vespa","boys",20);
         Product HarryBook=new Product("Harry Potter","books",101);
         Product WitcherBook=new Product("Witcher","books",10);
         Product LifeBook=new Product("Life","books",30);
         Product Diapers=new Product("Pampers","baby",26);
+        Product ToyCar=new Product("Car","boys",60);
+        Product ToyPlane=new Product("Plane","boys",50);
+        Product Lego=new Product("Lego Vespa","boys",20);
+
         //CREAZIONE DI UN MAGAZZINO DOVE CONTIENE TUTTI I PRODOTTI//
         // ELENCATI SOPRA TRAMITE UNA ARRAYLIST//
 
-        List<Product> magazzino=new ArrayList<>(Arrays.asList(Ps5,ToyCar,ToyPlane,Lego,HarryBook,WitcherBook,LifeBook,Diapers));
+        List<Product> magazzino=new ArrayList<>(Arrays.asList(Ps5,HarryBook,WitcherBook,LifeBook,Diapers,ToyCar,ToyPlane,Lego));
 
         //SEZIONE CUTOMERS(CLIENTI)//
         Customer Massimo=new Customer("Massimo Boldi",1);
@@ -51,7 +54,15 @@ public class Main {
 
         MassimoOrder2.addProduct(magazzino.get(0));
 
+        List<Order> OrderList=new ArrayList<>(Arrays.asList(MassimoOrder,CristianOrder,PaoloOrder,LucaOrder,MassimoOrder2));
 
+        System.out.println("------------------------ESERCIZIO 1-------------------------");
+       List<Product> BookDesired= magazzino.stream().filter(product -> product.getCategory().equals("books") && product.getPrice()>100).toList();
+       BookDesired.forEach(System.out::println);
 
+        System.out.println("------------------------ESERCIZIO 2-------------------------");
+        List<Order> BabiesOrder=OrderList.stream().filter(order ->
+        order.getProducts().stream().anyMatch(product -> product.getCategory().equals("baby"))).toList();
+        BabiesOrder.forEach(System.out::println);
     }
 }
