@@ -3,14 +3,13 @@ package Es1;
 import java.util.List;
 import java.util.Random;
 
-public class Product extends Order {
+public class Product {
        private String name;
        private String category;
-       private Double price;
+       private double price;
        private Long id;
 
-       public Product(List<Product> product, Customer customer, String name, String category, Double price) {
-              super(product, customer);
+       public Product( String name, String category, double price) {
               this.name = name;
               this.category = category;
               this.price = price;

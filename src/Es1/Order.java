@@ -21,7 +21,7 @@ public class Order {
         this.customer = customer;
         this.status = "is loading";
         this.orderDate = LocalDate.now();
-        this.deliveryDate = orderDate.plusDays(1);
+        this.deliveryDate = LocalDate.now().plusWeeks(1);
         this.products = new ArrayList<>();
     }
 
