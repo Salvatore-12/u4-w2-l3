@@ -4,6 +4,7 @@ import Esercizi.Customer;
 import Esercizi.Order;
 import Esercizi.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -64,5 +65,21 @@ public class Main {
         List<Order> BabiesOrder=OrderList.stream().filter(order ->
         order.getProducts().stream().anyMatch(product -> product.getCategory().equals("baby"))).toList();
         BabiesOrder.forEach(System.out::println);
+
+        System.out.println("------------------------ESERCIZIO 3-------------------------");
+        List<Product>DiscountedBoys=magazzino.stream().filter(product -> product.getCategory().equals("boys")).map(product ->
+        {product.setPrice(product.getPrice()*0.90);
+        return product;
+        }).toList();
+        DiscountedBoys.forEach(System.out::println);
+
+        System.out.println("------------------------ESERCIZIO 4-------------------------");
+        List<Order>Tier2Order=OrderList.stream().filter(order -> order.getCustomer().getTier()==2
+                && order.getOrderDate().isAfter(LocalDate.parse("2023-12-08"))
+                && order.getOrderDate().isBefore(LocalDate.parse("2023-12-10"))).toList();
+
+        List<Product> Tier2Oproducts=new ArrayList<>();
+        Tier2Order.forEach(order ->{Tier2Oproducts.addAll(order.getProducts());});
+        Tier2Oproducts.forEach(System.out::println);
     }
 }
